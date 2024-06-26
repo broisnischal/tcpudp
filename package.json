@@ -3,10 +3,13 @@
   "version": "1.0.50",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run --watch src/index.ts",
+    "start": "bun run --watch src/app.ts"
   },
   "dependencies": {
-    "elysia": "latest"
+    "@elysiajs/eden": "^1.0.14",
+    "elysia": "^1.0.25",
+    "hono": "^4.4.8"
   },
   "devDependencies": {
     "bun-types": "latest"
