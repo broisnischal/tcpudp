@@ -3,40 +3,41 @@ import { treaty } from "@elysiajs/eden";
 import { App } from ".";
 import { ArrayBufferSink } from "bun";
 
-// const app = treaty<App>("localhost:3000");
+const app = treaty<App>("localhost:3000");
 
-// // response type: 'Hi Elysia'
-// const { data, error } = await app.hi.get();
+// response type: 'Hi Elysia'
+const { data, error } = await app.hi.get();
 
-// const {} = await app.mirror.post({
-//   id: 1,
-//   name: "Elysia",
-// });
-
-// The client
-const socket = await Bun.connect({
-  hostname: "localhost",
-  port: 8080,
-
-  socket: {
-    data(socket, data) {
-      console.log("got data", data.toString("utf-8"));
-    },
-    open(socket) {},
-    close(socket) {},
-    drain(socket) {},
-    error(socket, error) {},
-
-    // client-specific handlers
-    connectError(socket, error) {}, // connection failed
-    end(socket) {}, // connection closed by server
-    timeout(socket) {}, // connection timed out
-  },
+const { data, error } = await app.mirror.post({
+  id: 1,
+  name: "Elysia",
+  username: "asddf",
 });
 
-const sink = new ArrayBufferSink();
-sink.start({ stream: true, highWaterMark: 1024 });
-socket.write("Hi Elysia");
+// The client
+// const socket = await Bun.connect({
+//   hostname: "localhost",
+//   port: 8080,
+
+//   socket: {
+//     data(socket, data) {
+//       console.log("got data", data.toString("utf-8"));
+//     },
+//     open(socket) {},
+//     close(socket) {},
+//     drain(socket) {},
+//     error(socket, error) {},
+
+//     // client-specific handlers
+//     connectError(socket, error) {}, // connection failed
+//     end(socket) {}, // connection closed by server
+//     timeout(socket) {}, // connection timed out
+//   },
+// });
+
+// const sink = new ArrayBufferSink();
+// sink.start({ stream: true, highWaterMark: 1024 });
+// socket.write("Hi Elysia");
 
 // queueMicrotask(() => {
 //   const data = sink.flush();
@@ -47,4 +48,4 @@ socket.write("Hi Elysia");
 //   }
 // });
 
-console.log("running client");
+// console.log("running client");
